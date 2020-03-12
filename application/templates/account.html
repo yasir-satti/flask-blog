@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block body_content %}
-    <h1>Register Page</h1>
-    <p>Need an account? Sign up</p>
+    <h1>Account Page</h1>
+    <p>{{ current_user.first_name }} Update your account details</p>
     <div class='form'>
         <form method='POST' action=''>
             {{ form.hidden_tag() }}
@@ -55,34 +55,11 @@
                 {% endif %}
             </div>
             <br>
-            <div class='form_group'></div>
-                <!--Password and Check Password fields-->
-                {{ form.password.label }}
-                {{ form.password }}
-                {% if form.password.errors %}
-                    <div class='error'>
-                        {% for error in form.password.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
-            <br>
-            <div class='form_group'></div>
-                <!--Password and Check Password fields-->
-                {{ form.confirm_password.label }}
-                {{ form.confirm_password }}
-                {% if form.confirm_password.errors %}
-                    <div class='error'>
-                        {% for error in form.confirm_password.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
-            </br>
             <div class='form_group'>
                 {{ form.submit }}
+            </div>
+            <div class='form_group'>
+                <a href={{ url_for('account_delete') }}> Delete</a>
             </div>
         </form>
     </div>
