@@ -2,11 +2,11 @@
 Description=Flask Application
 [Service]
 User=pythonadm
-WorkingDirectory=/opt/flask-app
+WorkingDirectory=/opt/flask-blog
 ExecStart=/bin/bash \
-	-c 'cd /opt/flask-app && \
-	source ./venv/bin/activate && \
-	python ./app.py'
+	-c 'cd /opt/flask-blog && \
+	. ./venv/bin/activate && \
+	flask run --host=0.0.0.0'
 Environment=SECRET_KEY={{SECRET_KEY}}
 Environment=DATABASE_URI=mysql+pymysql://{{MYSQL_USER}}:{{MYSQL_PASSWORD}}@{{MYSQL_HOST}}/{{MYSQL_DATABASE}}
 [Install]
